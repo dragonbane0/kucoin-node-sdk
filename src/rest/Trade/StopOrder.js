@@ -49,11 +49,10 @@ exports.postStopOrder = async function postStopOrder(baseParams = {}, orderParam
 /**
  * @name cancelOrder
  * @description Cancel an Order
- * @param {string} symbol - Path parameter, indicating trading pairs
  * @param {string} orderId - Path parameter, Order ID, unique ID of the order.
  * @return {Object} { code, success, data }
  */
-exports.cancelOrder = async function cancelOrder(symbol, orderId) {
+exports.cancelOrder = async function cancelOrder(orderId) {
   /*
   {
     "code": "200000",     
@@ -64,7 +63,7 @@ exports.cancelOrder = async function cancelOrder(symbol, orderId) {
     }
   }
   */
-  return await Http().DEL(`/api/v1/stop-order/${symbol}/${orderId}`);
+  return await Http().DEL(`/api/v1/stop-order/${orderId}`);
 };
 
 
@@ -99,11 +98,10 @@ exports.cancelMultiOrders = async function cancelMultiOrders(symbol, tradeType, 
 /**
  * @name getOrder
  * @description Get An Order
- * @param {string} symbol - Path parameter, indicating trading pairs
  * @param {string} orderId - Order ID, unique identifier of an order, obtained via the List orders.
  * @return {Object} { code, success, data }
  */
-exports.getOrder = async function getOrder(symbol, orderId) {
+exports.getOrder = async function getOrder(orderId) {
   /*
   {
     "code": "200000",     
@@ -111,7 +109,7 @@ exports.getOrder = async function getOrder(symbol, orderId) {
     }
   }
   */
-  return await Http().GET(`/api/v1/stop-order/${symbol}/${orderId}`);
+  return await Http().GET(`/api/v1/stop-order/${orderId}`);
 };
 
 
